@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Aylık Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aylık Plan</title>
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Dijital Planlayıcı</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a asp-controller="Home" asp-action="anasayfa">Ana Sayfa</a></li>
+                <li><a asp-controller="Home" asp-action="Daily">Günlük Plan</a></li>
+                <li><a asp-controller="Home" asp-action="Weekly">Haftalık Plan</a></li>
+                <li><a asp-controller="Home" asp-action="Monthly">Aylık Plan</a></li>
+                <li>
+                    <form asp-controller="Home" asp-action="Index" method="get" style="display:inline;">
+                        <button type="submit" class="logout-button">Çıkış Yap</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Aylık Planınız</h1>
+        <div class="monthly-grid">
+            @* Günler Dinamik Olarak Buraya Gelecek *@
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Planlayıcı - Tüm hakları saklıdır.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+            const daysInMonth = 30;
+            const monthlyGrid = document.querySelector('.monthly-grid');
+
+            for (let i = 0; i < daysInMonth; i++) {
+                const date = new Date(today.getFullYear(), today.getMonth(), i + 1);
+                const dayBox = document.createElement('div');
+                dayBox.classList.add('day-box');
+
+                const dateSpan = document.createElement('span');
+                dateSpan.textContent = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+                const planButton = document.createElement('button');
+                planButton.classList.add('toggle-task');
+                planButton.textContent = 'Planla';
+
+                const taskBox = document.createElement('div');
+                taskBox.classList.add('task-box', 'hidden');
+
+                const taskLabel = document.createElement('label');
+                taskLabel.setAttribute('for', `task-${i}`);
+                taskLabel.textContent = 'Görev:';
+
+                const taskInput = document.createElement('input');
+                taskInput.type = 'text';
+                taskInput.id = `task-${i}`;
+                taskInput.classList.add('task-input');
+                taskInput.placeholder = 'Görev girin';
+
+                const detailsLabel = document.createElement('label');
+                detailsLabel.setAttribute('for', `details-${i}`);
+                detailsLabel.textContent = 'Detaylar:';
+
+                const detailsInput = document.createElement('input');
+                detailsInput.type = 'text';
+                detailsInput.id = `details-${i}`;
+                detailsInput.classList.add('task-input');
+                detailsInput.placeholder = 'Detayları girin';
+
+                const saveButton = document.createElement('button');
+                saveButton.classList.add('save-task');
+                saveButton.textContent = 'Kaydet';
+
+                taskBox.appendChild(taskLabel);
+                taskBox.appendChild(taskInput);
+                taskBox.appendChild(detailsLabel);
+                taskBox.appendChild(detailsInput);
+                taskBox.appendChild(saveButton);
+
+                dayBox.appendChild(dateSpan);
+                dayBox.appendChild(planButton);
+                dayBox.appendChild(taskBox);
+
+                monthlyGrid.appendChild(dayBox);
+            }
+
+            // "Planla" butonlarına tıklanınca kutuyu aç/kapat
+            document.querySelectorAll(".toggle-task").forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    const taskBox = document.querySelectorAll(".task-box")[index];
+                    taskBox.classList.toggle("hidden");
+                    const dayBox = document.querySelectorAll(".day-box")[index];
+
+                    if (!taskBox.classList.contains("hidden")) {
+                        dayBox.style.height = "250px";
+                    } else {
+                        dayBox.style.height = "";
+                    }
+                });
+            });
+
+            // "Kaydet" butonuna tıklanınca verileri sakla
+            document.querySelectorAll(".save-task").forEach(saveButton => {
+                saveButton.addEventListener("click", (event) => {
+                    const taskBox = event.target.parentElement;
+                    const taskInput = taskBox.querySelector(".task-input").value;
+                    const detailsInput = taskBox.querySelector("input:nth-of-type(2)").value;
+
+                    console.log("Görev:", taskInput, "| Detaylar:", detailsInput);
+                    alert("Görev başarıyla kaydedildi!");
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Günlük Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="header">
+    <div class="logo">Dijital Planlayıcı</div>
+    <nav>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="anasayfa">Ana Sayfa</a></li>
+            <li><a asp-controller="Home" asp-action="Daily">Günlük Plan</a></li>
+            <li><a asp-controller="Home" asp-action="Weekly">Haftalık Plan</a></li>
+            <li><a asp-controller="Home" asp-action="Monthly">Aylık Plan</a></li>
+            <li>
+                <form asp-controller="Home" asp-action="Index" method="get" style="display:inline;">
+                    <button type="submit" class="logout-button">Çıkış Yap</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main-content">
+    <h2>Günlük Plan</h2>
+    <div class="hourly-grid">
+        @for (int hour = 0; hour < 24; hour++)
+        {
+            string formattedHour = hour.ToString("D2") + ":00";
+            <div class="hour-box">
+                <span>@formattedHour</span>
+                <button class="toggle-task">Planla</button>
+                <div class="task-box hidden">
+                    <label for="task-@hour">Görev:</label>
+                    <input type="text" id="task-@hour" class="task-input" placeholder="Görev girin">
+                    <label for="details-@hour">Detaylar:</label>
+                    <input type="text" id="details-@hour" class="task-input" placeholder="Detayları girin">
+                    <button class="save-task">Kaydet</button>
+                </div>
+            </div>
+        }
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Planla butonunun işlevselliği
+        document.querySelectorAll(".toggle-task").forEach(button => {
+            button.addEventListener("click", () => {
+                const taskBox = button.nextElementSibling;
+                taskBox.classList.toggle("hidden");
+            });
+        });
+
+        // Kaydet butonunun işlevselliği
+        document.querySelectorAll(".save-task").forEach(saveButton => {
+            saveButton.addEventListener("click", (event) => {
+                const taskBox = event.target.parentElement;
+                const taskInput = taskBox.querySelector(".task-input").value;
+                const detailsInput = taskBox.querySelector("input:nth-of-type(2)").value;
+
+                console.log("Görev:", taskInput, "| Detaylar:", detailsInput);
+                alert("Görev başarıyla kaydedildi!");
+            });
+        });
+    });
+</script>

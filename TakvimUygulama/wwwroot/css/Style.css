@@ -1,0 +1,457 @@
+﻿/* Genel Stil */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6fa;
+    color: #2c3e50;
+}
+
+.header {
+    background-color: #153144;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+    .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+        .nav-links li a:hover {
+            color: #f1c40f;
+        }
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .logout-btn:hover {
+        background-color: #c0392b;
+        color: #fefefe;
+    }
+
+.main-content {
+    padding: 40px;
+}
+
+/* ANA SAYFA ÖZEL CSS - BAŞLANGIÇ */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .welcome-section h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+
+    .welcome-section p {
+        font-size: 1.2em;
+        color: #7f8c8d;
+    }
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    width: 30%;
+    min-width: 250px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+
+    .card p {
+        font-size: 1em;
+        color: #7f8c8d;
+        margin-bottom: 15px;
+    }
+
+    .card .button {
+        display: inline-block;
+        background-color: #27ae60;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .card .button:hover {
+            background-color: #218c53;
+        }
+
+.motivation {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #34495e;
+    color: white;
+    border-radius: 8px;
+}
+
+    .motivation h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    .motivation p {
+        font-size: 1.2em;
+    }
+/* ANA SAYFA ÖZEL CSS - BİTİŞ */
+
+/* Saat Kutuları - Günlük Plan */
+.hourly-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 sütun */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.hour-box, .day-box, .plan-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .hour-box span {
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+.toggle-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .toggle-task:hover {
+        background-color: #218c53;
+    }
+
+.task-box {
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 100%;
+}
+
+    .task-box.hidden {
+        display: none;
+    }
+
+    .task-box label {
+        font-weight: bold;
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+.task-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+    .task-input:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+
+/* Haftalık Plan */
+.weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 sütun */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.week-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ecf0f1; /* Hafif gri arka plan */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .week-box span {
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+/* Aylık Plan */
+.monthly-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Her satırda 6 kutu */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.day-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 120px;
+    position: relative;
+}
+
+    .day-box span {
+        font-size: 16px;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    /* Bugün Özel Stil */
+    .day-box.today {
+        background-color: #dff9fb;
+        border: 2px solid #22a6b3;
+    }
+
+/* Planla Butonu */
+.plan-button {
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .plan-button:hover {
+        background-color: #218c53;
+    }
+
+/* Plan Kutusu */
+.plan-box {
+    display: none;
+    position: absolute;
+    bottom: -160px;
+    left: 10%;
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 10;
+}
+
+    .plan-box label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .plan-box input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+    }
+
+        .plan-box input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+    .plan-box::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        transform: rotate(45deg);
+        box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.login-container {
+    background-color: #ffffff;
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    margin-top: 100px;
+    margin-left: 250px;
+}
+
+    .login-container h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #0984e3;
+    }
+
+.welcome-message {
+    font-size: 16px;
+    color: #636e72;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #dcdde1;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+        transition: 0.3s ease;
+    }
+
+        .input-group input:focus {
+            border-color: #0984e3;
+            box-shadow: 0 0 5px rgba(9, 132, 227, 0.5);
+        }
+
+.login-btn {
+    background-color: #0984e3;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+    .login-btn:hover {
+        background-color: #74b9ff;
+    }
+
+.signup-message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #2d3436;
+}
+
+    .signup-message a {
+        color: #0984e3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .signup-message a:hover {
+            text-decoration: underline;
+        }
+
+/* İllüstrasyon Alanı */
+.login-illustration {
+    display: none; /* Mobilde gizli */
+}
+
+    .login-illustration img {
+        width: 400px;
+        max-width: 100%;
+        margin-top: 100px;
+    }
+
+/* Responsive Tasarım */
+@media (min-width: 768px) {
+    .login-illustration {
+        display: block;
+    }
+}

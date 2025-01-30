@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="header">
+    <div class="logo">Dijital Planlayıcı</div>
+    <nav>
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="anasayfa">Ana Sayfa</a></li>
+            <li><a asp-controller="Home" asp-action="Daily">Günlük Plan</a></li>
+            <li><a asp-controller="Home" asp-action="Weekly">Haftalık Plan</a></li>
+            <li><a asp-controller="Home" asp-action="Monthly">Aylık Plan</a></li>
+            <li>
+                <form asp-controller="Home" asp-action="Index" method="get" style="display:inline;">
+                    <button type="submit" class="logout-button">Çıkış Yap</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section class="welcome-section">
+    <center>
+        <h1>Planlama Uygulamasına Hoş Geldiniz</h1>
+        <p>Planlı bir yaşam için doğru yerdesiniz!</p>
+    </center>
+</section>
+<section class="dashboard">
+    <div class="card">
+        <h3>Günlük Plan</h3>
+        <p>Bugün yapılacak görevlerinizi görüntüleyin.</p>
+        <a asp-controller="Home" asp-action="Daily" class="button">Hemen Bak</a>
+    </div>
+    <div class="card">
+        <h3>Haftalık Plan</h3>
+        <p>Bu haftanın hedeflerini oluşturun ve yönetin.</p>
+        <a asp-controller="Home" asp-action="Weekly" class="button">Planla</a>
+    </div>
+    <div class="card">
+        <h3>Aylık Plan</h3>
+        <p>Uzun vadeli planlarınızı gözden geçirin.</p>
+        <a asp-controller="Home" asp-action="Monthly" class="button">Gözat</a>
+    </div>
+</section>
+<section class="motivation">
+    <h2>Günün Motivasyonu</h2>
+    <p>"Başarının anahtarı planlamada gizlidir."</p>
+</section>

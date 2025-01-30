@@ -1,0 +1,25 @@
+﻿@model List<TakvimUygulama.Data.Etkinlik>
+
+    <h2>Etkinlik Listesi</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Başlık</th>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var etkinlik in Model)
+            {
+            <tr>
+                <td>@etkinlik.Id</td>
+                <td>@etkinlik.Başlık</td>
+                <td>@etkinlik.Açıklama</td>
+                <td>@etkinlik.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+            </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planlama Uygulaması - Giriş</title>
+    <link rel="stylesheet" href="style.css">
+    <header class="header">
+        <div class="logo">Dijital Planlayıcı</div>
+        <nav>
+           
+        </nav>
+    </header>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-container">
+            <h2>Planlama Uygulamasına Giriş Yap</h2>
+            <p class="welcome-message">Planlamaya başlayabilmek için lütfen giriş yapınız.</p>
+
+            <!-- Hata mesajı varsa göster -->
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="error-message">@ViewBag.ErrorMessage</div>
+            }
+
+            <!-- Form burada başlıyor -->
+            <form method="POST" asp-action="Login">
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Şifre" required>
+                </div>
+                <button type="submit" class="login-btn">Giriş Yap</button>
+            </form>
+            <!-- Form bitiyor -->
+
+            <p class="signup-message">Henüz bir hesabınız yok mu? <a href="signup.html">Kayıt Ol</a></p>
+        </div>
+    </div>
+</body>
+</html>
